@@ -1,0 +1,28 @@
+{
+  "name": "leeds-entry-challenges",
+  "version": "1.0.0",
+  "description": "NC interview scraper for Leeds applicants",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "request-promise": "^4.2.4",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ziziou91/leeds-entry-challenges.git"
+  },
+  "author": "Josh Gray",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ziziou91/leeds-entry-challenges/issues"
+  },
+  "homepage": "https://github.com/Ziziou91/leeds-entry-challenges#readme"
+}
