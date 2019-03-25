@@ -3,7 +3,7 @@ const {
   getYCBMBookings,
   getIntervieweesEmails
 } = require('./lib/youCanBookMe');
-const { getInterviewees } = require('./lib/hubspotData');
+const { getInterviewees, organiseByDates } = require('./lib/hubspotData');
 const KEYS = require('./.ignore/keys');
 
 const getCodeWarsScore = async codewarsURL => {
@@ -63,7 +63,8 @@ const getAttendees = async auth => {
   const interviewees = await getInterviewees(emails, auth.hubspot);
   const intervieweesArr = Object.values(interviewees);
   const codewarsScore = await getInterviewObject(intervieweesArr, liveBookings);
-  console.log(codewarsScore);
+  const sortedInterviews = organiseByDates(codewarsScore);
+  console.log(sortedInterviews);
 };
 
 getAttendees(KEYS);
