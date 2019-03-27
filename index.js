@@ -33,6 +33,7 @@ const getInterviewObject = async (intervieweesArr, liveBookings) => {
       name: `${interviewee.properties.firstname.value} ${
         interviewee.properties.lastname.value
       }`,
+      email: interviewee.properties.email.value,
       interview: interview.startsAt,
       campus: campus,
       'codewars score': 'No CodeWars info :('
