@@ -36,6 +36,8 @@ const getInterviewObject = async (intervieweesArr, liveBookings) => {
       email: interviewee.properties.email.value,
       interview: interview.startsAt,
       campus: campus,
+      HubspotURL: `https://app.hubspot.com/sales/3489321/contact/${interviewee.vid ||
+        null}`,
       'codewars score': 'No CodeWars info :('
     };
     if (interviewee.properties.codewars_username) {
