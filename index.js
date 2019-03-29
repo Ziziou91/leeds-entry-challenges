@@ -1,17 +1,19 @@
-const { getYCBMBookings } = require('./lib/youCanBookMe');
-const { getInterviewees } = require('./lib/hubspotData');
-const { getWeeksInterviews } = require('./lib/intervieweeParser.js');
+const { getYCBMBookings } = require('./lib/apiCalls/youCanBookMe');
+const { getInterviewees } = require('./lib/apiCalls/hubspot');
+const { getWeeksInterviews } = require('./lib/logic/intervieweeParser.js');
 const KEYS = require('./.ignore/keys');
 
-const getAttendees = async auth => {
+const getAttendees = async (auth, week) => {
   const liveBookings = await getYCBMBookings(auth.ycbm);
   const interviewees = await getInterviewees(liveBookings, auth.hubspot);
   const intervieweesArr = Object.values(interviewees);
   const thisWeeksInterviews = await getWeeksInterviews(
     intervieweesArr,
-    liveBookings
+    liveBookings,
+    week
   );
   console.log(thisWeeksInterviews);
 };
 
-getAttendees(KEYS);
+//getAttendees(KEYS, 'this-week');
+getAttendees(KEYS, 'next-week');
