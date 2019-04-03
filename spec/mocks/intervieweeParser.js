@@ -44,7 +44,7 @@ const weeksInterviews = [
           time: '18:00 '
         }
       ],
-      Leeds: []
+      Leeds: 'no interviews today'
     }
   },
   {
@@ -61,10 +61,12 @@ const weeksInterviews = [
           time: '11:30 '
         }
       ],
-      Leeds: []
+      Leeds: 'no interviews today'
     }
   },
-  { Friday: { Manchester: [], Leeds: [] } }
+  {
+    Friday: { Manchester: 'no interviews today', Leeds: 'no interviews today' }
+  }
 ];
 
 module.exports = {

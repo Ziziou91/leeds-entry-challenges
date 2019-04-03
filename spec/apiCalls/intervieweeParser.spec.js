@@ -1,9 +1,9 @@
 const { expect } = require('chai');
+const { sortByDays } = require('../../lib/logic/intervieweeParser');
 const {
-  createInteviewString,
   createWeekString,
-  sortByDays
-} = require('../../lib/logic/intervieweeParser');
+  createInteviewString
+} = require('../../lib/logic/createInterviewString');
 const { interviewObj, weeksInterviews } = require('../mocks/intervieweeParser');
 
 describe('createInteriewString', function() {
@@ -14,15 +14,15 @@ describe('createInteriewString', function() {
   });
 });
 
-describe('createWeekString', function() {
+describe.only('createWeekString', function() {
   it('should return a string', () => {
     const weekString = createWeekString(weeksInterviews);
-    console.log(weekStirng);
-    expect(createWeekString).to.be.a('string');
+    console.log(weekString);
+    expect(weekString).to.be.a('string');
   });
 });
 
-describe.only('sortByDays', function() {
+describe('sortByDays', function() {
   it('should return an object of sorted days', () => {
     const sortedByDays = sortByDays(weeksInterviews);
     console.log(sortedByDays);

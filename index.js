@@ -1,6 +1,6 @@
 const { getYCBMBookings } = require('./lib/apiCalls/youCanBookMe');
 const { getInterviewees } = require('./lib/apiCalls/hubspot');
-const { getWeeksInterviews } = require('./lib/logic/intervieweeParser.js');
+const { getWeeksInterviews } = require('./lib/logic/formatInterviews.js');
 const KEYS = require('./.ignore/keys');
 
 const getAttendees = async (auth, week) => {
