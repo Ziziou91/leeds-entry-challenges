@@ -20,5 +20,5 @@ const getAttendees = async (auth, week) => {
   }
 };
 
-//getAttendees(KEYS, 'this-week');
-getAttendees(KEYS, 'next-week');
+getAttendees(KEYS, 'this-week');
+//getAttendees(KEYS, 'next-week');
