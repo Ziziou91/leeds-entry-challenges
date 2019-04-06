@@ -26,7 +26,5 @@ describe.only('filterGivenWeeksIVs', function() {
       'next-week',
       codewarsArray
     );
-    //console.log(thisWeeksInterviews);
-    console.log(nextWeeksInterviews);
   });
 });
