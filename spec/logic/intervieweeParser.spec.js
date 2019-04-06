@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { sortByDays } = require('../../lib/logic/intervieweeParser');
+const { sortByDays } = require('../../lib/logic/formatInterviews');
 const {
   createWeekString,
   createInteviewString
@@ -14,10 +14,9 @@ describe('createInteriewString', function() {
   });
 });
 
-describe.only('createWeekString', function() {
+describe('createWeekString', function() {
   it('should return a string', () => {
     const weekString = createWeekString(weeksInterviews);
-    console.log(weekString);
     expect(weekString).to.be.a('string');
   });
 });

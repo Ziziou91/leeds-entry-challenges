@@ -13,6 +13,7 @@ const getAttendees = async (auth, week) => {
       liveBookings,
       week
     );
+    console.log('hello');
     console.log(thisWeeksInterviews);
   } catch (error) {
     console.log('in error');
@@ -20,5 +21,5 @@ const getAttendees = async (auth, week) => {
   }
 };
 
-getAttendees(KEYS, 'this-week');
-//getAttendees(KEYS, 'next-week');
+//getAttendees(KEYS, 'this-week');
+getAttendees(KEYS, 'next-week');

@@ -28,7 +28,7 @@ describe('getAllBookings', function() {
   });
 });
 
-describe.only('filterPastInterviews', function() {
+describe('filterPastInterviews', function() {
   it('should return an empty array when bookings an empty array', () => {
     const result = filterPastInterviews([]);
     expect(result).to.be.an('array');
