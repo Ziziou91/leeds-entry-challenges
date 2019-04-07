@@ -20,11 +20,26 @@ const createInterviewTimes = (codewarsArray, daysToAdd) => {
 const thisWeeksInterviews = createInterviewTimes(codewarsArray, 0);
 const nextWeeksInterviews = createInterviewTimes(codewarsArray, 7);
 
-describe.only('filterGivenWeeksIVs', function() {
-  it('returns the correct day', () => {
+describe('filterGivenWeeksIVs', function() {
+  it('returns an array including date objects and an array of interviews', () => {
     const [startDate, endDate, weeksIVs] = filterGivenWeeksIVs(
       'next-week',
       codewarsArray
     );
+    expect(Object.prototype.toString.call(startDate)).to.equal('[object Date]');
+    expect(Object.prototype.toString.call(endDate)).to.equal('[object Date]');
+    expect(weeksIVs).to.be.an('array');
+  });
+  it('correctly filters out interviews not in the correct week', () => {
+    const noInterviewsThisWeek = filterGivenWeeksIVs(
+      'this-week',
+      nextWeeksInterviews
+    );
+    const noInterviewsNextWeek = filterGivenWeeksIVs(
+      'next-week',
+      thisWeeksInterviews
+    );
+    expect(noInterviewsNextWeek[2].length).to.equal(0);
+    expect(noInterviewsThisWeek[2].length).to.equal(0);
   });
 });

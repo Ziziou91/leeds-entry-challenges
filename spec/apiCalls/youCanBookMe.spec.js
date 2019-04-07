@@ -2,7 +2,8 @@ const { expect } = require('chai');
 const KEYS = require('../../.ignore/keys');
 const {
   getAllBookings,
-  filterPastInterviews
+  filterPastInterviews,
+  getYCBMBookings
 } = require('../../lib/apiCalls/youCanBookMe');
 const { calendarIDs, invalidCalendarIDs } = require('../mocks/mocks');
 const {
@@ -18,7 +19,7 @@ describe('getAllBookings', function() {
     expect(result).to.be.an('array');
     expect(result).to.be.an('array');
   });
-  it('returns an empty array when passed an empty array of bookings', async () => {
+  it('returns an empty array when passed an empty array of calendarIDs', async () => {
     const result = await getAllBookings([], KEYS.ycbm);
     expect(result).to.eql([]);
   });
@@ -29,7 +30,7 @@ describe('getAllBookings', function() {
 });
 
 describe('filterPastInterviews', function() {
-  it('should return an empty array when bookings an empty array', () => {
+  it('should return an empty array when bookings is an empty array', () => {
     const result = filterPastInterviews([]);
     expect(result).to.be.an('array');
     expect(result).to.eql([]);
@@ -57,5 +58,23 @@ describe('filterPastInterviews', function() {
     expect(result.length).to.eql(2);
     expect(result[0].title).to.equal(title1);
     expect(result[1].title).to.equal(title2);
+  });
+});
+
+describe.only('getYCBMBookings', function() {
+  this.timeout(8000);
+  it('should return an array of live bookings when given valid authentication', async () => {
+    const liveBookings = await getYCBMBookings(KEYS.ycbm);
+    expect(liveBookings).to.be.an('array');
+    expect(liveBookings.length > 0).to.equal(true);
+  });
+  it('should give every interview an email property', async () => {
+    const liveBookings = await getYCBMBookings(KEYS.ycbm);
+    expect(liveBookings.every(livebooking => 'email' in livebooking)).to.equal(
+      true
+    );
+    expect(
+      liveBookings.every(livebooking => livebooking['email'].length > 0)
+    ).to.equal(true);
   });
 });
