@@ -7,13 +7,13 @@ const getAttendees = async (auth, week) => {
   try {
     const liveBookings = await getYCBMBookings(auth.ycbm);
     const interviewees = await getInterviewees(liveBookings, auth.hubspot);
+    console.log(interviewees);
     const intervieweesArr = Object.values(interviewees);
     const thisWeeksInterviews = await getWeeksInterviews(
       intervieweesArr,
       liveBookings,
       week
     );
-    console.log('hello');
     console.log(thisWeeksInterviews);
   } catch (error) {
     console.log('in error');

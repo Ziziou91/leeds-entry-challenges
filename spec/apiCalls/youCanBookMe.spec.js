@@ -61,7 +61,7 @@ describe('filterPastInterviews', function() {
   });
 });
 
-describe.only('getYCBMBookings', function() {
+describe('getYCBMBookings', function() {
   this.timeout(8000);
   it('should return an array of live bookings when given valid authentication', async () => {
     const liveBookings = await getYCBMBookings(KEYS.ycbm);

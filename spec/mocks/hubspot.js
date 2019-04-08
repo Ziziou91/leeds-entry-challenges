@@ -53,6 +53,9 @@ const liveBookings = [
   }
 ];
 
+emptyEmailsBookings = liveBookings.map(booking => (booking.email = ''));
+
 module.exports = {
-  liveBookings
+  liveBookings,
+  emptyEmailsBookings
 };
