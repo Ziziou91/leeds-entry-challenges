@@ -2,7 +2,9 @@ const { expect } = require('chai');
 const moment = require('moment');
 const {
   getFutureDate,
-  filterGivenWeeksIVs
+  filterGivenWeeksIVs,
+  createWeekString,
+  createInteviewString
 } = require('../../lib/logic/formatInterviews');
 const { codewarsArray } = require('../mocks/formatInterviews');
 

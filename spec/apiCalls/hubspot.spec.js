@@ -3,7 +3,7 @@ const KEYS = require('../../.ignore/keys');
 const { getInterviewees } = require('../../lib/apiCalls/hubspot');
 const { liveBookings, emptyEmailsBookings } = require('../mocks/hubspot');
 
-describe.only('getInterviewees', function() {
+describe('getInterviewees', function() {
   it('returns an interviewees object when give YCBM bookings', async () => {
     const interviewees = await getInterviewees(liveBookings, KEYS.hubspot);
     expect(interviewees).to.be.an('object');
