@@ -12,7 +12,8 @@
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
-    "chai": "^4.2.0"
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1"
   },
   "scripts": {
     "test": "mocha spec/* --bail",
