@@ -8,12 +8,13 @@ const {
   filterPastInterviews,
   getYCBMBookings
 } = require('../../lib/apiCalls/youCanBookMe');
-const { calendarIDs, invalidCalendarIDs } = require('../mocks/mocks');
 const {
   bookings,
   pastBookings,
   futureBookings,
-  invalidYCBM
+  invalidYCBM,
+  calendarIDs,
+  invalidCalendarIDs
 } = require('../mocks/youCanBookMe');
 
 describe('getAllBookings', function() {
@@ -28,11 +29,7 @@ describe('getAllBookings', function() {
     expect(result).to.eql([]);
   });
   it('should handle invalid calendarIDs', async () => {
-    await expect(
-      getAllBookings(invalidCalendarIDs, KEYS.ycbm)
-    ).to.be.rejectedWith(
-      'StatusCodeError: 401 - {"message":"Profile not accesible: 9e039304-1d41-4cd2-9cc3-ee0f5ce6a13e","code":"ycbm_api_account_insufficient_permissions","type":"YcbmApiException","httpCode":401,"errors":[]}'
-    );
+    await expect(getAllBookings(invalidCalendarIDs, KEYS.ycbm)).to.be.rejected;
   });
   it('should handle an invalid authentication key', async () => {
     await expect(getAllBookings(calendarIDs, 12345)).to.be.rejectedWith(

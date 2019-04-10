@@ -9,7 +9,8 @@ const {
 const { codewarsArray } = require('../mocks/formatInterviews');
 
 const createInterviewTimes = (codewarsArray, daysToAdd) => {
-  return codewarsArray.map(appointment => {
+  return codewarsArray.slice().map(appointment => {
+    appointment = JSON.parse(JSON.stringify(appointment));
     appointment.interview = new Date(
       moment()
         .add(daysToAdd, 'days')
