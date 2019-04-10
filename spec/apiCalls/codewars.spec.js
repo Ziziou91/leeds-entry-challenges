@@ -9,7 +9,7 @@ const {
   interviewObj
 } = require('../mocks/codewars');
 
-describe.only('getCodeWarsScore', function() {
+describe('getCodeWarsScore', function() {
   this.timeout(10000);
   it('returns an interview object when given valid arguments', async () => {
     const interviewee = await getCodeWarsScore(hubspotContact, interviewObj);

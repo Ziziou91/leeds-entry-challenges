@@ -1,4 +1,7 @@
-const { expect } = require('chai');
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
+const expect = chai.expect;
+chai.use(chaiAsPromised);
 const KEYS = require('../../.ignore/keys');
 const { getInterviewees } = require('../../lib/apiCalls/hubspot');
 const { liveBookings, emptyEmailsBookings } = require('../mocks/hubspot');
@@ -16,5 +19,8 @@ describe('getInterviewees', function() {
     );
     expect(interviewees).to.be.an('object');
     expect(interviewees).to.eql({});
+  });
+  it('Throws an error when given invalid authentication', async () => {
+    await expect(getInterviewees(emptyEmailsBookings, 12345)).to.be.rejected;
   });
 });

@@ -1,4 +1,7 @@
-const { expect } = require('chai');
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
+const expect = chai.expect;
+chai.use(chaiAsPromised);
 const KEYS = require('../../.ignore/keys');
 const {
   getAllBookings,
@@ -9,7 +12,8 @@ const { calendarIDs, invalidCalendarIDs } = require('../mocks/mocks');
 const {
   bookings,
   pastBookings,
-  futureBookings
+  futureBookings,
+  invalidYCBM
 } = require('../mocks/youCanBookMe');
 
 describe('getAllBookings', function() {
@@ -24,8 +28,19 @@ describe('getAllBookings', function() {
     expect(result).to.eql([]);
   });
   it('should handle invalid calendarIDs', async () => {
-    const error = await getAllBookings(invalidCalendarIDs, KEYS.ycbm);
-    expect(error.statusCode).to.equal(401);
+    await expect(
+      getAllBookings(invalidCalendarIDs, KEYS.ycbm)
+    ).to.be.rejectedWith(
+      'StatusCodeError: 401 - {"message":"Profile not accesible: 9e039304-1d41-4cd2-9cc3-ee0f5ce6a13e","code":"ycbm_api_account_insufficient_permissions","type":"YcbmApiException","httpCode":401,"errors":[]}'
+    );
+  });
+  it('should handle an invalid authentication key', async () => {
+    await expect(getAllBookings(calendarIDs, 12345)).to.be.rejectedWith(
+      'RequestError: Error: no auth mechanism defined'
+    );
+    await expect(getAllBookings(calendarIDs, invalidYCBM)).to.be.rejectedWith(
+      'StatusCodeError: 404 - {"message":"Account not found","code":"ycbm_api_account_not_found","type":"YcbmApiException","httpCode":404,"errors":[]}'
+    );
   });
 });
 

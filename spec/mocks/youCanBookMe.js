@@ -115,8 +115,14 @@ const futureBookings = [
   }
 ];
 
+invalidYCBM = {
+  username: 'incorrect@northcoders.com',
+  password: 'aaaaaaaaa'
+};
+
 module.exports = {
   pastBookings,
   futureBookings,
-  bookings
+  bookings,
+  invalidYCBM
 };
