@@ -6,6 +6,7 @@ const KEYS = require('./.ignore/keys');
 const getAttendees = async (auth, week) => {
   try {
     const liveBookings = await getYCBMBookings(auth.ycbm);
+
     const interviewees = await getInterviewees(liveBookings, auth.hubspot);
     const intervieweesArr = Object.values(interviewees);
     const thisWeeksInterviews = await getWeeksInterviews(
