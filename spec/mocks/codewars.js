@@ -112,7 +112,7 @@ const hubspotContact = {
     value:
       "I've covered the basics of a programming language (Codecademy, Introduction to Programming)"
   },
-  firstname: { value: 'Andrew' },
+  firstname: { value: 'John' },
   ip_state: { value: '' },
   ip_country: { value: 'united kingdom' },
   cohort: { value: 'May 20th 2019' },
@@ -261,7 +261,7 @@ const invalidCWHubspotContact = {
     value:
       "I've covered the basics of a programming language (Codecademy, Introduction to Programming)"
   },
-  firstname: { value: 'Andrew' },
+  firstname: { value: 'John' },
   ip_state: { value: '' },
   ip_country: { value: 'united kingdom' },
   cohort: { value: 'May 20th 2019' },
