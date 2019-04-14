@@ -6,14 +6,6 @@ const {
 } = require('../../lib/logic/createInterviewString');
 const { interviewObj, weeksInterviews } = require('../mocks/intervieweeParser');
 
-describe('createInteriewString', function() {
-  it('should return a string', () => {
-    const interviewString = createInteviewString(interviewObj);
-    console.log(interviewString);
-    expect(interviewString).to.be.a('string');
-  });
-});
-
 describe('createWeekString', function() {
   it('should return a string', () => {
     const weekString = createWeekString(weeksInterviews);

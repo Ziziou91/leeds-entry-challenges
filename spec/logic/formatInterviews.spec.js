@@ -4,8 +4,11 @@ const {
   getFutureDate,
   filterGivenWeeksIVs,
   createWeekString,
-  createInteviewString
+  createInterviewObjects
 } = require('../../lib/logic/formatInterviews');
+const {
+  createInterviewString
+} = require('../../lib/logic/createInterviewString');
 const { codewarsArray } = require('../mocks/formatInterviews');
 
 const createInterviewTimes = (codewarsArray, daysToAdd) => {
