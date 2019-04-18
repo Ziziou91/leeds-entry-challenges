@@ -9,7 +9,7 @@ const getAttendees = async (auth, week) => {
 
     const interviewees = await getInterviewees(liveBookings, auth.hubspot);
     const intervieweesArr = Object.values(interviewees);
-    console.log(intervieweesArr);
+
     const thisWeeksInterviews = await getWeeksInterviews(
       intervieweesArr,
       liveBookings,
