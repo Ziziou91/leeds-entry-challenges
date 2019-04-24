@@ -8,6 +8,7 @@ const getAttendees = async (auth, week) => {
     const liveBookings = await getYCBMBookings(auth.ycbm);
 
     const interviewees = await getInterviewees(liveBookings, auth.hubspot);
+    console.log(liveBookings);
     const intervieweesArr = Object.values(interviewees);
 
     const thisWeeksInterviews = await getWeeksInterviews(
@@ -15,12 +16,11 @@ const getAttendees = async (auth, week) => {
       liveBookings,
       week
     );
-    console.log(thisWeeksInterviews);
   } catch (error) {
     console.log('in error');
     console.log(error);
   }
 };
 
-getAttendees(KEYS, 'this-week');
-//getAttendees(KEYS, 'next-week');
+//getAttendees(KEYS, 'this-week');
+getAttendees(KEYS, 'next-week');
